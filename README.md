@@ -1,5 +1,7 @@
 # Trading Algorítmico utilizando estrategias de acción del precio
 
+> **🆕 Octubre de 2026 — rama [`update-2026`](https://github.com/joanby/trading-algoritmico-price-action/tree/update-2026):** el mismo código del curso, adaptado a las librerías de hoy (yfinance, pandas 3, matplotlib). Con las versiones actuales, el código de esta rama principal falla al descargar precios con `yf.download`. Qué ha cambiado y por qué: [`CAMBIOS-2026.md`](https://github.com/joanby/trading-algoritmico-price-action/blob/update-2026/CAMBIOS-2026.md).
+
 🇪🇸 Puedes apuntarte en nuestro curso en: https://cursos.frogamesformacion.com/courses/trading-algoritmico-1
 
 O obtener la Ruta completa de trading algorítmico en: https://cursos.frogamesformacion.com/bundles/ruta-trading 
