@@ -166,3 +166,25 @@ en *scalping*, con miles de operaciones, el spread decide el resultado.
   símbolo admite un único modo de ejecución, y si no, la orden puede rechazarse. El bucle no tiene ninguna
   pausa: repite la ronda durante todo el segundo de arranque y luego da vueltas sin parar. Opera
   siempre en una **cuenta demo**, y empieza con `live = False`.
+- **El robot de figuras envolventes no replica el backtest** (aviso en el código, sin cambiarlo). En los
+  capítulos 4 y 5, cada figura abre una posición que se mantiene 5 días (`duration=5`). El robot mira las
+  velas una vez al día y `MT5.run` cierra la posición al día siguiente si ese día no hay una figura nueva
+  en el mismo sentido; además, cada orden lleva un stop loss y un take profit del 1 %. La figura se busca
+  en la última vela que da MetaTrader 5, que puede ser la del día en curso, todavía sin cerrar. Y opera
+  cinco criptomonedas, Ethereum incluida, cuando el capítulo 4 concluye que con Ethereum la estrategia no
+  funciona. Lo que ganes o pierdas en vivo no es lo que mide el backtest.
+
+## Erratas del vídeo (el código no cambia)
+
+- **`spread` en `engulfing` (capítulos 4 y 5).** No es un coste: es la tolerancia entre el cierre de ayer
+  y la apertura de hoy (±0,5 %). Tampoco es un «intervalo de confianza», como se dice al presentar la
+  figura: es una banda fija elegida a mano. En el capítulo 5, `engulfing(symbol, spread=0.00, duration=5)`
+  recibe el parámetro y no lo usa: la tolerancia va escrita fija a 0,5. Por eso da lo mismo que la versión
+  del capítulo 4 con su valor por defecto (`spread=0.5`), y pasarle otro `spread` no cambia nada.
+- **Backtesting (capítulo 5).** En el vídeo, Sortino, beta, alfa y drawdown se calculan sobre las
+  acciones de Google. En el notebook se calculan sobre una estrategia RSI aplicada a Google
+  (`return_serie = RSI(f, 5, 14)`, celda 9), así que las cifras no son las del vídeo. Esta diferencia ya
+  estaba en la rama principal.
+- **«Estrategia segura» (capítulo 5).** El drawdown es pequeño porque la estrategia casi siempre está
+  fuera del mercado, no porque sea inmune a las caídas. Y la duración de 5 días se eligió mirando el
+  resultado sobre los mismos datos con los que se juzga, sin costes de operación.
